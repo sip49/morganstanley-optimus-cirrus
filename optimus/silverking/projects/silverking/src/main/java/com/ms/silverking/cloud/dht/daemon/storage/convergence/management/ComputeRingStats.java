@@ -11,6 +11,7 @@
  */
 package com.ms.silverking.cloud.dht.daemon.storage.convergence.management;
 
+import io.github.pixee.security.BoundedLineReader;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
@@ -196,7 +197,7 @@ public class ComputeRingStats {
     reader = new BufferedReader(new InputStreamReader(in));
     lostServers = new HashSet<>();
     do {
-      line = reader.readLine();
+      line = BoundedLineReader.readLine(reader, 5_000_000);
       if (line != null) {
         line = line.trim();
         if (line.length() > 0) {

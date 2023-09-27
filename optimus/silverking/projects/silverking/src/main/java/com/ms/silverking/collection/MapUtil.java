@@ -11,6 +11,7 @@
  */
 package com.ms.silverking.collection;
 
+import io.github.pixee.security.BoundedLineReader;
 import java.io.BufferedReader;
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -54,7 +55,7 @@ public class MapUtil {
     reader = new BufferedReader(new InputStreamReader(in));
     do {
       ++lineNumber;
-      line = reader.readLine();
+      line = BoundedLineReader.readLine(reader, 5_000_000);
       if (line != null) {
         int dIndex;
 
