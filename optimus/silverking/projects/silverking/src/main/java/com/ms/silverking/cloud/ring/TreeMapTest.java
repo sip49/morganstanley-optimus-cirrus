@@ -11,6 +11,7 @@
  */
 package com.ms.silverking.cloud.ring;
 
+import java.security.SecureRandom;
 import java.util.Map;
 import java.util.Random;
 import java.util.TreeMap;
@@ -33,7 +34,7 @@ public class TreeMapTest {
     TreeMap<Long, Integer> ring;
     Random random;
 
-    random = new Random();
+    random = new SecureRandom();
     ring = new TreeMap<Long, Integer>();
     for (int i = 0; i < numNodes; i++) {
       ring.put(random.nextLong(), i);
@@ -49,7 +50,7 @@ public class TreeMapTest {
     long totalAccesses;
 
     totalAccesses = 0;
-    random = new Random();
+    random = new SecureRandom();
     sw = new SimpleStopwatch();
     while (sw.getSplitSeconds() < durationSeconds) {
       for (int i = 0; i < batchSize; i++) {
