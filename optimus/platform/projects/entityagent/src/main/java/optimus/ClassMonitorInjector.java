@@ -11,6 +11,8 @@
  */
 package optimus;
 
+import io.github.pixee.security.HostValidator;
+import io.github.pixee.security.Urls;
 import java.io.File;
 import java.io.IOException;
 import java.lang.instrument.ClassFileTransformer;
@@ -285,7 +287,7 @@ public class ClassMonitorInjector implements ClassFileTransformer {
             .getClassLoader()
             .getResource(constructDependencyName(ClassMonitorInjector.class.getName()));
     if (resourceURL != null) {
-      Path thisJarPath = Paths.get(new URL(resourceURL.getPath().split("!")[0]).toURI());
+      Path thisJarPath = Paths.get(Urls.create(resourceURL.getPath().split("!")[0], Urls.HTTP_PROTOCOLS, HostValidator.DENY_COMMON_INFRASTRUCTURE_TARGETS).toURI());
       boolean isBuildDirJar = thisJarPath.getFileName().toString().contains("HASH");
       if (isBuildDirJar) {
         return thisJarPath.getParent().getParent().getParent().getParent();
@@ -743,7 +745,7 @@ public class ClassMonitorInjector implements ClassFileTransformer {
     }
     if (jarfileName.endsWith(".jar")) {
       try {
-        boolean result = isOptimusJar(new URL(jarfileName));
+        boolean result = isOptimusJar(Urls.create(jarfileName, Urls.HTTP_PROTOCOLS, HostValidator.DENY_COMMON_INFRASTRUCTURE_TARGETS));
         cachedIsOptimusJar.put(jarfileName, result);
         return rememberAsOptimusClass(resourcePath, result);
       } catch (IOException ignored) {
