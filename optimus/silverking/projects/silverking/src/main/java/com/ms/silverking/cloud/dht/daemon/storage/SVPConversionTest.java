@@ -18,6 +18,7 @@ import java.nio.ByteBuffer;
 import java.nio.MappedByteBuffer;
 import java.nio.channels.FileChannel;
 import java.nio.channels.FileChannel.MapMode;
+import java.nio.file.Files;
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.LinkedBlockingQueue;
 
@@ -39,7 +40,7 @@ public class SVPConversionTest {
     File f;
     RandomAccessFile rf;
 
-    f = File.createTempFile("svp", ".map");
+    f = Files.createTempFile("svp", ".map");
     f.deleteOnExit();
     System.out.printf("TempFile %s\n", f);
     FileUtil.writeToFile(f, new byte[baseMapSize]);

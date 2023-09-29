@@ -21,6 +21,7 @@ import java.nio.channels.FileChannel.MapMode;
 
 import com.ms.silverking.collection.Triple;
 import com.ms.silverking.io.FileUtil;
+import java.nio.file.Files;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -65,7 +66,7 @@ class SVPMapper {
     FileChannel fc;
 
     rf = null;
-    f = File.createTempFile("SVPMapper", ".map", mapDir);
+    f = Files.createTempFile(mapDir.toPath(), "SVPMapper", ".map");
     f.deleteOnExit();
     FileUtil.writeToFile(f, new byte[mapSize]);
     rf = new RandomAccessFile(f, "rw");
