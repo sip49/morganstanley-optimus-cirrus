@@ -89,7 +89,7 @@ public abstract class Authorizer {
       Optional<String> authenticated, byte[] requestedUser);
 
   public static void setAuthorizer(String authDef) {
-    if (authDef == null || authDef.equals(emptyDef)) {
+    if (authDef == null || emptyDef.equals(authDef)) {
       isEnabled = false;
     } else {
       isEnabled = true;

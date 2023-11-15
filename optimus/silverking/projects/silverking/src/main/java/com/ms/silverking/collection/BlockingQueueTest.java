@@ -204,17 +204,17 @@ public class BlockingQueueTest implements Runnable {
       qDefs = args[5].split(",");
       for (String qDef : qDefs) {
         log.info("Queue type: {}", qDef);
-        if (qDef.equals("LightLinkedBlockingQueue")) {
+        if ("LightLinkedBlockingQueue".equals(qDef)) {
           q = new LightLinkedBlockingQueue<Integer>(0);
           // q = new LightLinkedBlockingQueue<Integer>(10000);
           // q = new LightLinkedBlockingQueue<Integer>(20000);
-        } else if (qDef.equals("LinkedBlockingQueue")) {
+        } else if ("LinkedBlockingQueue".equals(qDef)) {
           q = new LinkedBlockingQueue<Integer>();
-        } else if (qDef.equals("LinkedTransferQueue")) {
+        } else if ("LinkedTransferQueue".equals(qDef)) {
           q = new LinkedTransferQueue<Integer>();
-        } else if (qDef.equals("SpinningTransferQueue")) {
+        } else if ("SpinningTransferQueue".equals(qDef)) {
           q = new SpinningTransferQueue<Integer>();
-        } else if (qDef.equals("SynchronousQueue")) {
+        } else if ("SynchronousQueue".equals(qDef)) {
           q = new LinkedBlockingQueue<Integer>();
           if (readers != 1 || writers != 1) {
             throw new RuntimeException("readers/writers must be 1 for SynchronousQueue");

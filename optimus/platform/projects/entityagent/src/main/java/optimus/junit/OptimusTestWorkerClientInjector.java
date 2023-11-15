@@ -97,7 +97,7 @@ public class OptimusTestWorkerClientInjector implements ClassFileTransformer {
   }
 
   private static boolean skipName(String name) {
-    return !name.equals(OPTIMUS_TEST_WORKER_CLIENT_CLASS);
+    return !OPTIMUS_TEST_WORKER_CLIENT_CLASS.equals(name);
   }
 
   @Override

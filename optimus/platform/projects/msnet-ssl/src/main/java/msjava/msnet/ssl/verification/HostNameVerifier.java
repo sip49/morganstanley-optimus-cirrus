@@ -107,7 +107,7 @@ class HostNameVerifier {
       LdapName ln = new LdapName(dn);
       String commonName = "";
       for (Rdn rdn : ln.getRdns()) {
-        if (rdn.getType().equalsIgnoreCase("CN")) {
+        if ("CN".equalsIgnoreCase(rdn.getType())) {
           commonName = rdn.getValue().toString();
           break;
         }

@@ -39,7 +39,7 @@ public abstract class Authenticator {
   }
 
   public static void setAuthenticator(String def) {
-    if (def == null || def.equals(emptyDef)) {
+    if (def == null || emptyDef.equals(def)) {
       singleton = new NoopAuthenticatorImpl();
     } else {
       singleton = parseSKDef(def);

@@ -81,7 +81,7 @@ public abstract class SuspectZKBase<M extends MetaPathsBase>
       String suspectsDef;
 
       suspectsDef = _zk.getString(worrisomesPath + "/" + accuser);
-      if (!suspectsDef.equals(emptySetDef)) {
+      if (!emptySetDef.equals(suspectsDef)) {
         suspectsDef = suspectsDef.trim().substring(1, suspectsDef.length() - 1);
         suspectsSet.addAll(Arrays.asList(suspectsDef.split(suspectsDelimiterString)));
       }
