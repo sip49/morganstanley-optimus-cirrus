@@ -575,7 +575,9 @@ public class SpinningTransferQueue<E> extends AbstractQueue<E>
         Object item = p.item;
         if (item != p && (item != null) == isData) { // unmatched
           if (isData == haveData) // can't match
-          break;
+          {
+              break;
+          }
           if (p.casItem(item, e)) { // match
             for (Node q = p; q != h; ) {
               Node n = q.next; // update by 2 unless singleton
@@ -693,9 +695,13 @@ public class SpinningTransferQueue<E> extends AbstractQueue<E>
   private static long spinsFor(Node pred, boolean haveData) {
     if (MP && pred != null) {
       if (pred.isData != haveData) // phase change
-      return FRONT_SPINS + CHAINED_SPINS;
+      {
+          return FRONT_SPINS + CHAINED_SPINS;
+      }
       if (pred.isMatched()) // probably at front
-      return FRONT_SPINS;
+      {
+          return FRONT_SPINS;
+      }
       if (pred.waiter == null) // pred apparently spinning
       return CHAINED_SPINS;
     }
