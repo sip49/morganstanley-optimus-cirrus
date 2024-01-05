@@ -13,6 +13,7 @@ package com.ms.silverking.cloud.dht.common;
 
 import java.math.BigInteger;
 import java.math.MathContext;
+import java.security.SecureRandom;
 import java.util.Random;
 import java.util.concurrent.ThreadLocalRandom;
 
@@ -71,7 +72,7 @@ public class KeyUtil {
   public static void test() {
     Random random;
 
-    random = new Random();
+    random = new SecureRandom();
     for (int i = 0; i < 1024; i++) {
       SimpleKey key1;
       BigInteger _key1;
