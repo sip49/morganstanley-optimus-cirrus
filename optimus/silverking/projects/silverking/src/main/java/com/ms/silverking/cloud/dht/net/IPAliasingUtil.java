@@ -11,6 +11,7 @@
  */
 package com.ms.silverking.cloud.dht.net;
 
+import io.github.pixee.security.BoundedLineReader;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
@@ -102,7 +103,7 @@ public class IPAliasingUtil {
         map = new HashMap<>();
         reader = new BufferedReader(new InputStreamReader(in));
         do {
-          line = reader.readLine();
+          line = BoundedLineReader.readLine(reader, 5_000_000);
           if (line != null) {
             Pair<IPAndPort, IPAndPort[]> entry;
             entry = parseAliasFileLine(line, fixedPort);

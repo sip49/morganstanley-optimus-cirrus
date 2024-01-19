@@ -11,6 +11,7 @@
  */
 package com.ms.silverking.cloud.skfs.meta;
 
+import io.github.pixee.security.BoundedLineReader;
 import java.io.BufferedReader;
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
@@ -71,7 +72,7 @@ public class SKFSConfiguration implements VersionedDefinition {
       String line;
       BufferedReader reader = new BufferedReader(new InputStreamReader(inStream));
       do {
-        line = reader.readLine();
+        line = BoundedLineReader.readLine(reader, 5_000_000);
         strList.add(line);
 
       } while (line != null);

@@ -11,6 +11,7 @@
  */
 package com.ms.silverking.io;
 
+import io.github.pixee.security.BoundedLineReader;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
@@ -101,7 +102,7 @@ public class StreamParser {
     try {
       lines = new ArrayList<String>();
       do {
-        line = reader.readLine();
+        line = BoundedLineReader.readLine(reader, 5_000_000);
         if (line != null) {
           if (regex == null || line.matches(regex)) {
             if (trimMode == TrimMode.trim) {
@@ -140,9 +141,9 @@ public class StreamParser {
     reader = new BufferedReader(new InputStreamReader(inStream));
     try {
       if (trimMode == TrimMode.trim) {
-        return reader.readLine().trim();
+        return BoundedLineReader.readLine(reader, 5_000_000).trim();
       } else {
-        return reader.readLine();
+        return BoundedLineReader.readLine(reader, 5_000_000);
       }
     } finally {
       if (closeMode == CloseMode.close) {
