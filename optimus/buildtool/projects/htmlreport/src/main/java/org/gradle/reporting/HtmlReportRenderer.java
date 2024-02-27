@@ -75,7 +75,7 @@ public class HtmlReportRenderer {
       if (resource == null) {
         String name = StringUtils.substringAfterLast(source.getPath(), "/");
         String type = StringUtils.substringAfterLast(source.getPath(), ".");
-        if (type.equalsIgnoreCase("png") || type.equalsIgnoreCase("gif")) {
+        if ("png".equalsIgnoreCase(type) || "gif".equalsIgnoreCase(type)) {
           type = "images";
         }
         String path = type + "/" + name;

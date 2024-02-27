@@ -32,9 +32,9 @@ public class CoreStringUtil {
   private static final String defaultNullString = "<null>";
 
   public static boolean parseBoolean(String s) throws ParseException {
-    if (s.equalsIgnoreCase("true")) {
+    if ("true".equalsIgnoreCase(s)) {
       return true;
-    } else if (s.equalsIgnoreCase("false")) {
+    } else if ("false".equalsIgnoreCase(s)) {
       return false;
     } else {
       throw new ParseException("Not a valid boolean: " + s, 0);

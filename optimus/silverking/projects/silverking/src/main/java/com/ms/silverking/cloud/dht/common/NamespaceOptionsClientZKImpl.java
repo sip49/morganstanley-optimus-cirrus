@@ -130,7 +130,7 @@ public class NamespaceOptionsClientZKImpl extends NamespaceOptionsClientBase {
       zk = metaZK.getZooKeeper();
       skDef = zk.getString(zk.getLatestVersionPath(versionPath));
 
-      if (skDef.equals(softDeletePlaceholder)) {
+      if (softDeletePlaceholder.equals(skDef)) {
         // Current version is soft-deleted, return null to respect the interface behaviour
         return null;
       }

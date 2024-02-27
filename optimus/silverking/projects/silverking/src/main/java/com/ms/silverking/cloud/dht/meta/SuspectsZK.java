@@ -115,7 +115,7 @@ public class SuspectsZK {
 
   private static Set<IPAndPort> nodeToIPAndPortSet(String suspectsDef) {
     Set<IPAndPort> suspects = new HashSet<>();
-    if (!suspectsDef.equals(emptySetDef)) {
+    if (!emptySetDef.equals(suspectsDef)) {
       suspectsDef.trim();
       suspectsDef = suspectsDef.substring(1, suspectsDef.length() - 1);
       for (String suspect : suspectsDef.split(suspectsDelimiterString)) {

@@ -141,7 +141,7 @@ public class GridConfiguration implements Serializable {
         String[] tokens;
 
         tokens = line.split("[\\s=]");
-        if (tokens.length != 3 || !tokens[0].equals("export")) {
+        if (tokens.length != 3 || !"export".equals(tokens[0])) {
           log.info("Skipping bad env line: {} {}", tokens.length, line);
         } else {
           envMap.put(tokens[1], tokens[2]);

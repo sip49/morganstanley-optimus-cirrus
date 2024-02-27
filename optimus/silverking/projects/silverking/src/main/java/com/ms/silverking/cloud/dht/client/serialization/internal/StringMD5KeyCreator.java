@@ -28,7 +28,7 @@ public class StringMD5KeyCreator extends BaseKeyCreator<String> {
   // FUTURE think about allowing users to override
 
   static {
-    use8BitEncoding = Charset.defaultCharset().name().equals("UTF-8");
+    use8BitEncoding = "UTF-8".equals(Charset.defaultCharset().name());
   }
 
   public StringMD5KeyCreator() {

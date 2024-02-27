@@ -462,7 +462,7 @@ class InstalledPathingJar implements ClasspathState {
             .getParent();
     Set<Path> fingerprints =
         Files.walk(installRoot)
-            .filter(p -> p.getFileName().toString().equals("fingerprints.txt"))
+            .filter(p -> "fingerprints.txt".equals(p.getFileName().toString()))
             .collect(Collectors.toSet());
     this.currentFingerprints = loadFileTimes(fingerprints);
   }

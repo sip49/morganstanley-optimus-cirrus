@@ -42,9 +42,9 @@ class TopologyFileToken {
   }
 
   static TopologyFileToken parse(String def) {
-    if (def.equals(OPEN_BLOCK_DELIMITER)) {
+    if (OPEN_BLOCK_DELIMITER.equals(def)) {
       return OPEN_BLOCK_TOKEN;
-    } else if (def.equals(CLOSE_BLOCK_DELIMITER)) {
+    } else if (CLOSE_BLOCK_DELIMITER.equals(def)) {
       return CLOSE_BLOCK_TOKEN;
     } else {
       return new TopologyFileToken(Type.ENTRY, def);

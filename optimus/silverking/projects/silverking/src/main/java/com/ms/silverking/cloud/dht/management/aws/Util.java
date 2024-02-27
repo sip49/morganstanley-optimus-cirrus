@@ -266,7 +266,7 @@ public class Util {
   }
 
   private static boolean statusIsOk(String status) {
-    return status.equals("ok");
+    return "ok".equals(status);
   }
 
   private static Instance getInstance(String id, List<Instance> instances) {

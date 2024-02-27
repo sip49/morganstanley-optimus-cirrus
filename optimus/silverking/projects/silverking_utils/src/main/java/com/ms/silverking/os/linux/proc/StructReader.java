@@ -50,13 +50,13 @@ public class StructReader<T> {
 
         fieldType = fields[i].getType().getName();
         try {
-          if (fieldType.equals("char")) {
+          if ("char".equals(fieldType)) {
             fields[i].setChar(newObject, tokens[i].charAt(0));
-          } else if (fieldType.equals("long")) {
+          } else if ("long".equals(fieldType)) {
             fields[i].setLong(newObject, Long.parseLong(tokens[i]));
-          } else if (fieldType.equals("int")) {
+          } else if ("int".equals(fieldType)) {
             fields[i].setInt(newObject, Integer.parseInt(tokens[i]));
-          } else if (fieldType.equals("java.lang.String")) {
+          } else if ("java.lang.String".equals(fieldType)) {
             fields[i].set(newObject, tokens[i]);
           } else {
             throw new RuntimeException("Unsupported field type: " + fieldType);

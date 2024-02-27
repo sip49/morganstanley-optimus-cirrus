@@ -65,16 +65,16 @@ class CleanerInjectorAdapter extends ClassVisitor implements Opcodes {
   @Override
   public MethodVisitor visitMethod(
       int access, String name, String desc, String signature, String[] exceptions) {
-    if (name.equals("finalize") && desc.equals("()V"))
+    if ("finalize".equals(name) && "()V".equals(desc))
       return null; // remove the method! disables finalization!!!!
 
-    if (name.equals(DELETE) && desc.equals(DELETE_DESC)) {
+    if (DELETE.equals(name) && DELETE_DESC.equals(desc)) {
       // find delete method and ignore the original code the method by not chaining to writer!
       return deleteParser;
     }
     var methodWriter = super.visitMethod(access, name, desc, signature, exceptions);
     var mv = CommonAdapter.wrap(methodWriter, access, name, desc);
-    if (name.equals("<init>") && desc.equals("(JZ)V")) {
+    if ("<init>".equals(name) && "(JZ)V".equals(desc)) {
       callSiteID = CleanerSupport.reserveCallSiteAtCompile();
     }
     return new CleanerInjectorMethodVisitor(mv, classType, callSiteID, access, name, desc);

@@ -64,7 +64,7 @@ public class PolicyParser {
     tokens = label.split(":");
     if (tokens.length != 2) {
       throw new PolicyParseException("bad policy group label");
-    } else if (!tokens[0].equals(rootLabelStart)) {
+    } else if (!rootLabelStart.equals(tokens[0])) {
       throw new RuntimeException("panic");
     } else {
       return tokens[1];
@@ -77,7 +77,7 @@ public class PolicyParser {
     tokens = def.split("\\s+");
     if (tokens.length != 2) {
       throw new PolicyParseException("bad root def");
-    } else if (!tokens[0].equals(rootToken)) {
+    } else if (!rootToken.equals(tokens[0])) {
       throw new PolicyParseException("bad root token");
     } else {
       return NodeClassAndName.parse(tokens[1]);

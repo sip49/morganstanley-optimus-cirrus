@@ -46,7 +46,7 @@ public class OldToNewLayoutMigration extends MigrationFiles {
           String[] property = workspaceCmdLine.replace(OsSpecific.envSetter, "").split("=");
           if (property.length == 2) {
             String propertyName = null;
-            if (property[0].equals("STRATOSPHERE_INSTALL")) {
+            if ("STRATOSPHERE_INSTALL".equals(property[0])) {
               propertyName = "stratosphereInstallDir";
             }
 

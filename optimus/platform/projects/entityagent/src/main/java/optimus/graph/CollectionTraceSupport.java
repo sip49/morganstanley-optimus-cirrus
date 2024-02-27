@@ -60,7 +60,7 @@ public class CollectionTraceSupport {
     String key = colCls + "::" + method + desc;
 
     // The $init$ and <clinit> methods are static, so we inject the static invoke method
-    if (method.equals("$init$") || method.equals("<clinit>")) traceInvokedImpl(ctorStatistics, key);
+    if ("$init$".equals(method) || "<clinit>".equals(method)) traceInvokedImpl(ctorStatistics, key);
     else traceInvokedImpl(statistics, key);
   }
 

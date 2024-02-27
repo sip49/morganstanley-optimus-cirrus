@@ -72,7 +72,7 @@ public class DynamicDependencyDiscoveryMethodVisitor extends MethodVisitor {
         }
         break;
       default:
-        if (name.equals("<init>")) {
+        if ("<init>".equals(name)) {
           switch (owner) {
             case "java/io/FileInputStream":
               // Skip very heaving SessionUtils for which there is no benefit to track (access to

@@ -114,9 +114,9 @@ public class OptimusDependencyDiscoveryMethodVisitor extends MethodVisitor {
   // Handle methods which returns Class, resource URL, or new class instance
   public void visitMethodInsn(int opcode, String owner, String name, String desc, boolean itf) {
     super.visitMethodInsn(opcode, owner, name, desc, itf);
-    if (name.equals("$init$")
-        || name.equals("<clinit>")
-        || name.equals("<init>")
+    if ("$init$".equals(name)
+        || "<clinit>".equals(name)
+        || "<init>".equals(name)
         || opcode == INVOKESTATIC
         || opcode == INVOKEINTERFACE
         || opcode == INVOKEVIRTUAL
@@ -154,7 +154,7 @@ public class OptimusDependencyDiscoveryMethodVisitor extends MethodVisitor {
   public void visitLocalVariable(
       String name, String descriptor, String signature, Label start, Label end, int index) {
     super.visitLocalVariable(name, descriptor, signature, start, end, index);
-    if (!name.equals("this")) {
+    if (!"this".equals(name)) {
       if (signature != null) {
         context.addClassDependenciesFromSignature(signature);
       } else {

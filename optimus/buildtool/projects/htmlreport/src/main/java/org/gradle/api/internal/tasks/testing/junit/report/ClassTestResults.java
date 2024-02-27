@@ -59,7 +59,7 @@ public class ClassTestResults extends CompositeTestResults {
 
   public String getSimpleName() {
     String simpleName = StringUtils.substringAfterLast(name, ".");
-    if (simpleName.equals("")) {
+    if ("".equals(simpleName)) {
       return name;
     }
     return simpleName;
