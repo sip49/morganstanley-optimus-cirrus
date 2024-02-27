@@ -35,7 +35,7 @@ public class HistoryTruncationMigratedRemote {
   }
 
   public boolean isOrigin() {
-    return remoteName.equals("origin");
+    return "origin".equals(remoteName);
   }
 
   public boolean isPrivateFork() {

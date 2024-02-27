@@ -269,7 +269,7 @@ class InstrumentationInjectorAdapter extends ClassVisitor implements Opcodes {
           new InstrumentationInjectorMethodVisitor(
               patchForNativeRecoding(className, name), mv, access, name, desc);
 
-    if (classPatch.cacheAllApplies && name.equals("apply") && isCreateEntityMethod(desc))
+    if (classPatch.cacheAllApplies && "apply".equals(name) && isCreateEntityMethod(desc))
       mv =
           new InstrumentationInjectorMethodVisitor(
               patchForCachingMethod(className, name), mv, access, name, desc);

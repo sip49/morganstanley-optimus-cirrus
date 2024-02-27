@@ -53,10 +53,10 @@ public class InstrumentationCmds {
           nextToken(D); // eat the quote
           args.add(lastToken.substring(1) + endToken);
           argTypes.add(String.class);
-        } else if (lastToken.equals("true")) {
+        } else if ("true".equals(lastToken)) {
           args.add(Boolean.TRUE);
           argTypes.add(boolean.class);
-        } else if (lastToken.equals("false")) {
+        } else if ("false".equals(lastToken)) {
           args.add(Boolean.FALSE);
           argTypes.add(boolean.class);
         }

@@ -33,7 +33,7 @@ public class PackageTestResults extends CompositeTestResults {
 
   @Override
   public String getTitle() {
-    return name.equals(DEFAULT_PACKAGE) ? "Default package" : ("Package " + name);
+    return DEFAULT_PACKAGE.equals(name) ? "Default package" : ("Package " + name);
   }
 
   @Override
