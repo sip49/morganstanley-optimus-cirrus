@@ -215,11 +215,17 @@ class InstrumentationInjectorAdapter extends ClassVisitor implements Opcodes {
 
   private static boolean maybeSimpleGetter(int access, String name, String desc) {
     if ((access & ACC_STATIC) != 0) // 1. Only care about "normal" vals
-    return false;
+    {
+        return false;
+    }
     if (!desc.startsWith("()")) // 2. Takes no args
-    return false;
+    {
+        return false;
+    }
     if (name.contains("$")) // 3. Some hidden method we probably don't care about
-    return false;
+    {
+        return false;
+    }
 
     // 4. Return type can't be void or scala.Nothing
     Type fieldType = Type.getReturnType(desc);
@@ -426,7 +432,9 @@ class InstrumentationInjectorMethodVisitor extends CommonAdapter {
 
     if (prefix != null) {
       if (prefix.descriptor != null) // If descriptor was supplied just use that
-      descriptor = prefix.descriptor;
+      {
+          descriptor = prefix.descriptor;
+      }
 
       mv.visitMethodInsn(INVOKESTATIC, prefix.cls, prefix.method, descriptor, false);
     }
