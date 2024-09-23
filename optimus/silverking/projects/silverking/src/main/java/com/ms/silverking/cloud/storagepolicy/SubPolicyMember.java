@@ -139,7 +139,7 @@ public class SubPolicyMember {
     quantityTok = tokens[0].trim();
     tok1 = tokens[1].trim();
     try {
-      if (quantityTok.equalsIgnoreCase(ALL_TOKEN)) {
+      if (ALL_TOKEN.equalsIgnoreCase(quantityTok)) {
         quantity = ALL;
       } else {
         quantity = Integer.parseInt(quantityTok);

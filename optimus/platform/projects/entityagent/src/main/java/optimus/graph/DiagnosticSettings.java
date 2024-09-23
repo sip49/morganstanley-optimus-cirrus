@@ -339,7 +339,7 @@ public class DiagnosticSettings {
   }
 
   private static boolean parseConsoleArg(String arg) {
-    return arg.equals("stop");
+    return "stop".equals(arg);
   }
 
   public static int getIntProperty(String name, int deflt) {

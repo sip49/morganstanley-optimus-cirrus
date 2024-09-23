@@ -279,7 +279,7 @@ public class EntityAgent {
     }
     String lockPrefix = "lock=";
     for (String prop : props) {
-      if (prop.equals("doublebox")) {
+      if ("doublebox".equals(prop)) {
         insertDoubleBoxTransformer();
       } else if (prop.startsWith(lockPrefix)) {
         String className = prop.substring(lockPrefix.length());

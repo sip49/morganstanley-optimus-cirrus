@@ -41,7 +41,7 @@ class CleanerInjectorMethodVisitor extends CommonAdapter {
 
   @Override
   public void onMethodExit(int opcode) {
-    var isPointerCtor = name.equals("<init>") && descriptor.equals("(JZ)V");
+    var isPointerCtor = "<init>".equals(name) && "(JZ)V".equals(descriptor);
     // NOTE: we adding to the existing implementation here
     if (isPointerCtor) assignCleanableField();
   }

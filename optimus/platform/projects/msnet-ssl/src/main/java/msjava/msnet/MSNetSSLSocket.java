@@ -213,7 +213,7 @@ public class MSNetSSLSocket extends MSNetTCPSocket {
       LdapName ln = new LdapName(pname);
       cn =
           ln.getRdns().stream()
-              .filter(i -> i.getType().equalsIgnoreCase("CN"))
+              .filter(i -> "CN".equalsIgnoreCase(i.getType()))
               .findFirst()
               .get()
               .getValue()

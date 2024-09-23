@@ -478,7 +478,7 @@ public class ClassMonitorInjector implements ClassFileTransformer {
   }
 
   private static boolean isClassOrJarResource(URL resource) {
-    return (resource.getProtocol().equals("jar") || resource.getProtocol().equals("file"))
+    return ("jar".equals(resource.getProtocol()) || "file".equals(resource.getProtocol()))
         && (resource.getPath().endsWith(classExtension) || resource.getPath().endsWith(".jar"));
   }
 
@@ -487,10 +487,10 @@ public class ClassMonitorInjector implements ClassFileTransformer {
       // Not interested in these cases
       return;
     }
-    if (resource.getProtocol().equals("jar")) {
+    if ("jar".equals(resource.getProtocol())) {
       logClassAndResourceUsage(
           new ResourceDependency(resource.toString(), ResourceAccessType.input), false, className);
-    } else if (resource.getProtocol().equals("file")) {
+    } else if ("file".equals(resource.getProtocol())) {
       try {
         // This occurs because windows local absolute paths (e.g. D:\foo\bar) get encoded as
         // file:////D:/foo/bar,
@@ -732,7 +732,7 @@ public class ClassMonitorInjector implements ClassFileTransformer {
     if (resourceUrl == null) {
       return rememberAsOptimusClass(resourcePath, false);
     }
-    if (resourceUrl.getProtocol().equals("jrt")) {
+    if ("jrt".equals(resourceUrl.getProtocol())) {
       // jigsaw modular run-time images
       return rememberAsOptimusClass(resourcePath, false);
     }

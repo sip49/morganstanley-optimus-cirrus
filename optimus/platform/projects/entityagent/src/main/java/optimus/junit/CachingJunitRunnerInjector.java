@@ -74,7 +74,7 @@ public class CachingJunitRunnerInjector implements ClassFileTransformer {
 
   private boolean extendsRunner(ClassLoader loader, String className) {
     if (className == null || skipName(className)) return false;
-    else if (className.equals(JUNIT_RUNNER_CLASS)) return true;
+    else if (JUNIT_RUNNER_CLASS.equals(className)) return true;
 
     // getResourceAsStream does not cause class loading, which we must absolutely avoid
     InputStream is = loader.getResourceAsStream(className + ".class");

@@ -67,7 +67,7 @@ public class TestIdleTransformer implements ClassFileTransformer {
     public MethodVisitor visitMethod(
         int access, String name, String descriptor, String signature, String[] exceptions) {
       MethodVisitor mv = super.visitMethod(access, name, descriptor, signature, exceptions);
-      if (!name.equals(M_ctor)) return mv;
+      if (!M_ctor.equals(name)) return mv;
       else
         return new MethodVisitor(ASM9, mv) {
           @Override
