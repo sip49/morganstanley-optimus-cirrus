@@ -11,6 +11,7 @@
  */
 package com.ms.silverking.cloud.config;
 
+import io.github.pixee.security.BoundedLineReader;
 import java.io.BufferedReader;
 import java.io.ByteArrayInputStream;
 import java.io.File;
@@ -157,7 +158,7 @@ public class HostGroupTable implements VersionedDefinition, Serializable {
       BufferedReader reader = new BufferedReader(new InputStreamReader(inStream));
       String line;
       do {
-        line = reader.readLine();
+        line = BoundedLineReader.readLine(reader, 5_000_000);
         readLine(line, hostGroupMap);
       } while (line != null);
       return new HostGroupTable(hostGroupMap, version);

@@ -11,6 +11,7 @@
  */
 package com.ms.silverking.cloud.dht.config;
 
+import io.github.pixee.security.BoundedLineReader;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
@@ -44,7 +45,7 @@ public class WeightsTable {
       nodeWeights = new HashMap<String, Double>();
       reader = new BufferedReader(new InputStreamReader(inStream));
       do {
-        line = reader.readLine();
+        line = BoundedLineReader.readLine(reader, 5_000_000);
         if (line != null) {
           line = line.trim();
           if (line.length() != 0) {
