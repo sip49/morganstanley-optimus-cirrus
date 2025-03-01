@@ -13,6 +13,7 @@ package com.ms.silverking.cloud.dht.meta;
 
 import java.io.IOException;
 import java.net.ServerSocket;
+import java.security.SecureRandom;
 import java.util.Random;
 
 public class Util {
@@ -37,7 +38,7 @@ public class Util {
   }
 
   static int getRandomPort(int min, int max) {
-    Random r = new Random();
+    Random r = new SecureRandom();
     int port = r.nextInt(max - min) + min;
     return port;
   }

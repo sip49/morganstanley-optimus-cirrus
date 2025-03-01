@@ -16,6 +16,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.nio.ByteBuffer;
 import java.nio.channels.GatheringByteChannel;
+import java.security.SecureRandom;
 import java.util.Random;
 
 import com.ms.silverking.time.SimpleStopwatch;
@@ -39,7 +40,7 @@ public class ChannelWriteTest {
   private static final int bufferSendLimit = 16;
 
   public ChannelWriteTest() {
-    random = new Random();
+    random = new SecureRandom();
   }
 
   public void runTests(String[] tests, int valueSize, int numValues, int iterations)

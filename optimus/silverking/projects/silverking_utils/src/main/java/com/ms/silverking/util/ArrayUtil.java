@@ -11,6 +11,7 @@
  */
 package com.ms.silverking.util;
 
+import java.security.SecureRandom;
 import java.util.Random;
 
 import com.ms.silverking.collection.CollectionUtil;
@@ -30,7 +31,7 @@ public class ArrayUtil<T> {
   public static final byte[] emptyByteArray = new byte[0];
 
   public ArrayUtil() {
-    random = new Random();
+    random = new SecureRandom();
   }
 
   public void shuffle(T[] a) {

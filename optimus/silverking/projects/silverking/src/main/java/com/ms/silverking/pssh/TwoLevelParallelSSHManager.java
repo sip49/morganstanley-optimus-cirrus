@@ -19,6 +19,7 @@ import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
 import java.rmi.server.ServerNotActiveException;
 import java.rmi.server.UnicastRemoteObject;
+import java.security.SecureRandom;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
@@ -223,7 +224,7 @@ public class TwoLevelParallelSSHManager extends UnicastRemoteObject implements S
     int numWorkers;
 
     hostList = ImmutableList.copyOf(workerCandidateHosts);
-    random = new Random();
+    random = new SecureRandom();
     numWorkers = (int) Math.min((double) workerCandidateHosts.size() * workerFraction, maxWorkers);
     ;
     numWorkers = Math.max(numWorkers, 1);

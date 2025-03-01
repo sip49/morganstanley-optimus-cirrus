@@ -11,6 +11,7 @@
  */
 package com.ms.silverking.numeric;
 
+import java.security.SecureRandom;
 import java.util.Random;
 
 import com.google.common.base.Preconditions;
@@ -54,7 +55,7 @@ public class RingInteger {
   }
 
   public static RingInteger createRandom(int min, int max) {
-    return createRandom(new Random(), min, max);
+    return createRandom(new SecureRandom(), min, max);
   }
 
   public static RingInteger createRandom(Random random, int min, int max) {

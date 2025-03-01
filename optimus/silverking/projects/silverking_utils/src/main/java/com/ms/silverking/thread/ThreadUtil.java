@@ -11,6 +11,7 @@
  */
 package com.ms.silverking.thread;
 
+import java.security.SecureRandom;
 import java.util.Map;
 import java.util.Random;
 import java.util.concurrent.TimeUnit;
@@ -27,7 +28,7 @@ public class ThreadUtil {
   private static Logger log = LoggerFactory.getLogger(ThreadUtil.class);
 
   static {
-    random = new Random();
+    random = new SecureRandom();
   }
 
   public static void sleepNanos(int nanos) {
