@@ -11,6 +11,7 @@
  */
 package com.ms.silverking.process;
 
+import io.github.pixee.security.SystemCommand;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.IOException;
@@ -193,8 +194,8 @@ public class ProcessExecutor {
     Runtime runTime = Runtime.getRuntime();
     try {
       Process p;
-      if (commands.length == 1) p = runTime.exec(commands[0]);
-      else p = runTime.exec(commands);
+      if (commands.length == 1) p = SystemCommand.runCommand(runTime, commands[0]);
+      else p = SystemCommand.runCommand(runTime, commands);
 
       if (wait) p.waitFor();
 
