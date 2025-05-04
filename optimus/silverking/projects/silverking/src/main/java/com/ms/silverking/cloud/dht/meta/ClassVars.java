@@ -11,6 +11,7 @@
  */
 package com.ms.silverking.cloud.dht.meta;
 
+import io.github.pixee.security.BoundedLineReader;
 import java.io.BufferedReader;
 import java.io.ByteArrayInputStream;
 import java.io.File;
@@ -71,7 +72,7 @@ public class ClassVars implements VersionedDefinition {
       map = new HashMap<>();
       reader = new BufferedReader(new InputStreamReader(inStream));
       do {
-        line = reader.readLine();
+        line = BoundedLineReader.readLine(reader, 5_000_000);
         readLine(line, map);
       } while (line != null);
       return new ClassVars(map, version);

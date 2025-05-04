@@ -11,6 +11,7 @@
  */
 package com.ms.silverking.numeric;
 
+import io.github.pixee.security.BoundedLineReader;
 import java.io.BufferedReader;
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -150,7 +151,7 @@ public class Histogram {
     counts = new ArrayList<Integer>();
     reader = new BufferedReader(new InputStreamReader(inStream));
     do {
-      line = reader.readLine();
+      line = BoundedLineReader.readLine(reader, 5_000_000);
       if (line != null && line.length() != 0) {
         String[] tokens;
 
