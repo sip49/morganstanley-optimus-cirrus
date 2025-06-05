@@ -11,6 +11,7 @@
  */
 package com.ms.silverking.cloud.toporing;
 
+import java.security.SecureRandom;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
@@ -743,7 +744,7 @@ public class RingTree {
     testCoordinate(LongRingspace.fractionToLong(0.76), pov);
     testCoordinate(LongRingspace.fractionToLong(0.99), pov);
     log.info("");
-    rand = new Random();
+    rand = new SecureRandom();
     for (int i = 0; i < 5; i++) {
       testCoordinate(LongRingspace.longToRingspace(rand.nextLong()), pov);
     }
