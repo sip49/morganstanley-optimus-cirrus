@@ -11,6 +11,7 @@
  */
 package optimus;
 
+import io.github.pixee.security.BoundedLineReader;
 import java.io.BufferedReader;
 import java.io.Closeable;
 import java.io.File;
@@ -721,7 +722,7 @@ class ObtJarMetadata {
           new BufferedReader(new InputStreamReader(jar.getInputStream(hashFile)))) {
 
         String line;
-        while ((line = entryHashes.readLine()) != null) {
+        while ((line = BoundedLineReader.readLine(entryHashes, 5_000_000)) != null) {
           int tabIdx = line.indexOf("\t");
           if (tabIdx > 0) {
             String className =

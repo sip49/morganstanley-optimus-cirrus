@@ -11,6 +11,7 @@
  */
 package com.ms.silverking.cloud.gridconfig;
 
+import io.github.pixee.security.BoundedLineReader;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
@@ -136,7 +137,7 @@ public class GridConfiguration implements Serializable {
     envMap = new HashMap<String, String>();
     reader = new BufferedReader(new InputStreamReader(new FileInputStream(envFile)));
     do {
-      line = reader.readLine();
+      line = BoundedLineReader.readLine(reader, 5_000_000);
       if (line != null) {
         String[] tokens;
 

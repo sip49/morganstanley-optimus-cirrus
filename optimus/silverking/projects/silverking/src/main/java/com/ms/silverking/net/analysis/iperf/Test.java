@@ -11,6 +11,7 @@
  */
 package com.ms.silverking.net.analysis.iperf;
 
+import io.github.pixee.security.BoundedLineReader;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
@@ -85,7 +86,7 @@ public class Test {
 
     measurements = new ArrayList<>();
     do {
-      line = reader.readLine();
+      line = BoundedLineReader.readLine(reader, 5_000_000);
       if (line != null) {
         measurements.add(Measurement.parse(line.trim()));
       }
