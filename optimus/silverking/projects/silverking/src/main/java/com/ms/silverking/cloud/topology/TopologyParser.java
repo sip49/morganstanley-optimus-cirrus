@@ -11,6 +11,7 @@
  */
 package com.ms.silverking.cloud.topology;
 
+import io.github.pixee.security.BoundedLineReader;
 import java.io.BufferedReader;
 import java.io.ByteArrayInputStream;
 import java.io.File;
@@ -51,7 +52,7 @@ public class TopologyParser {
     try {
       reader = new BufferedReader(new InputStreamReader(in));
       do {
-        line = reader.readLine();
+        line = BoundedLineReader.readLine(reader, 5_000_000);
         if (line != null) {
           line = line.trim();
           if (line.length() > 0) {

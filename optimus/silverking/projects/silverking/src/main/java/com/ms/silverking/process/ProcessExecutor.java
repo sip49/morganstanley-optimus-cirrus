@@ -11,6 +11,7 @@
  */
 package com.ms.silverking.process;
 
+import io.github.pixee.security.BoundedLineReader;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.IOException;
@@ -202,7 +203,7 @@ public class ProcessExecutor {
         InputStream inputStream = p.getInputStream();
         BufferedReader stdInput = new BufferedReader(new InputStreamReader(inputStream));
         String line = null;
-        while ((line = stdInput.readLine()) != null) output.append(line + newline);
+        while ((line = BoundedLineReader.readLine(stdInput, 5_000_000)) != null) output.append(line + newline);
         inputStream.close();
       }
 
@@ -211,7 +212,7 @@ public class ProcessExecutor {
         InputStream errorStream = p.getErrorStream();
         BufferedReader stdErr = new BufferedReader(new InputStreamReader(errorStream));
         String line = null;
-        while ((line = stdErr.readLine()) != null) log.info("{}", line);
+        while ((line = BoundedLineReader.readLine(stdErr, 5_000_000)) != null) log.info("{}", line);
         errorStream.close();
       }
     } catch (IOException | InterruptedException e) {
